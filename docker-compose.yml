@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  api:
+    container_name: bookboard-api
+    depends_on:
+      - postgres
+    restart: always
+    build: ./api
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./api:/app
+
+  client:
+    container_name: bookboard-client
+    depends_on:
+      - postgres
+      - api
+    restart: always
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+
+  postgres:
+    image: postgres
+    container_name: bookboard-postgres
+    hostname: postgres
+    environment:
+      - POSTGRES_DB=bookboard
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./bookboardSchema.sql:/docker-entrypoint-initdb.d/bookboardSchema.sql
+
+
+volumes:
+  schema.sql:

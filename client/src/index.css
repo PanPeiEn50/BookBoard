@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '~@flaticon/flaticon-uicons/css/all/all';
+
+@layer base {
+  @font-face {
+    font-family: 'Fjalla One';
+    src: local('Fjalla One'),
+      url('./fonts/FjallaOne-Regular.ttf') format('truetype');
+  }
+
+  .icon-fix {
+    line-height: 0.5em;
+    vertical-align: -0.15em;
+    display: inline-flex;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

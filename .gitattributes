@@ -1,0 +1,3 @@
+api/database/*.sql linguist-vendored
+bookboardSchema.sql -linguist-vendored
+*.sql linguist-detectable=false

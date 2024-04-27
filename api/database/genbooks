@@ -1,0 +1,28 @@
+#!/bin/bash
+
+genres=(architecture "art history" design music fantasy horror "mystery and detective stories" romance "science fiction" "kids books" history psychology women "mental health" painting programming)
+
+numbooks=25
+offset=0
+curnum=$numbooks
+
+for genre in "${genres[@]}"
+do
+    echo "genre: $genre"
+    while [ "$curnum" -gt 0 ]
+    do
+	output=$(node bookBoardInsertion.js "$genre" "$curnum" "$offset")
+        echo "output: $output"
+        output2=$(echo "$output" | grep -E -o "[0-9]{1,2}")
+        # echo "output2: $output2"
+	offset="$((offset+curnum))"
+	# echo "offset: $offset"
+	out="$((curnum-output2))"
+	# echo "out: $out"
+	curnum=$output2
+	echo "curnum: $curnum, offset: $offset"
+    done
+    offset=0
+    curnum=$numbooks
+    # break;
+done
